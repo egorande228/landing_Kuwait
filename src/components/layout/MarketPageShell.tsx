@@ -13,18 +13,6 @@ type MarketPageShellProps = {
   children: ReactNode;
 };
 
-function getContextLinks(content: MarketContent, page: PageTone) {
-  if (page === 'partnership') {
-    return content.navigation.partnership;
-  }
-
-  if (page === 'faq') {
-    return content.navigation.faq;
-  }
-
-  return content.navigation.home;
-}
-
 function getPathname(page: PageTone) {
   if (page === 'partnership') {
     return '/partnership';
@@ -44,11 +32,15 @@ export function MarketPageShell({ content, page, children }: MarketPageShellProp
       <div className="market-shell__content">
         <Header
           brand={content.brand}
-          contextLinks={getContextLinks(content, page)}
           cta={content.navigation.headerCtas[page]}
           globalLinks={content.navigation.global}
           locale={content.locale}
           pathname={getPathname(page)}
+          sectionMenus={{
+            '/': content.navigation.home,
+            '/faq': content.navigation.faq,
+            '/partnership': content.navigation.partnership,
+          }}
           ui={content.ui}
         />
         <main className="market-main">{children}</main>

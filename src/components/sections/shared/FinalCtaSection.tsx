@@ -15,7 +15,7 @@ export function FinalCtaSection({ content, tone = 'player' }: FinalCtaSectionPro
     <section className={`section-shell section-shell--cta section-shell--cta-${tone}`} id={content.id}>
       <div className="shell-container">
         <RevealGroup>
-          <SurfaceCard className="final-cta-shell p-5 sm:p-6 lg:p-8" data-reveal="scale" variant="stage">
+          <SurfaceCard className="final-cta-shell" data-reveal="scale" padding="lg" variant="stage">
             <div className="final-cta-grid">
               <div className="final-cta-copy">
                 <p className="eyebrow text-[var(--color-primary-strong)]" data-reveal>

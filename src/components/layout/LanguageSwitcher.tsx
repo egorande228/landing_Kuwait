@@ -9,6 +9,7 @@ import { type Locale } from '@/lib/i18n';
 type LanguageSwitcherProps = {
   locale: Locale;
   label: string;
+  variant?: 'default' | 'menu';
 };
 
 const languageOptions: Array<{ code: Locale; shortLabel: string }> = [
@@ -16,7 +17,7 @@ const languageOptions: Array<{ code: Locale; shortLabel: string }> = [
   { code: 'en', shortLabel: 'EN' },
 ];
 
-export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
+export function LanguageSwitcher({ locale, label, variant = 'default' }: LanguageSwitcherProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -43,7 +44,11 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
   };
 
   return (
-    <div aria-label={label} className="locale-switcher" role="group">
+    <div
+      aria-label={label}
+      className={joinClasses('locale-switcher', variant === 'menu' && 'locale-switcher--menu')}
+      role="group"
+    >
       {languageOptions.map((option) => (
         <button
           className={joinClasses('locale-switcher__button', locale === option.code && 'is-active')}

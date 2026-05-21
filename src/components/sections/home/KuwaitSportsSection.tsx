@@ -28,50 +28,53 @@ export function KuwaitSportsSection({ section }: KuwaitSportsSectionProps) {
         </div>
 
         <div className="sports-grid">
-          <SurfaceCard className="sports-lead-card" data-hover="tilt" data-reveal="scale" variant="stage">
+          <SurfaceCard className="sports-football-card" data-hover="tilt" data-reveal="scale" variant="media">
             {section.lead.media ? (
-              <MediaSlot className="sports-lead-card__media" media={section.lead.media}>
-                <div className="sports-lead-card__overlay">
-                  {section.lead.eyebrow ? <span className="sports-lead-card__eyebrow">{section.lead.eyebrow}</span> : null}
-                  <div className="sports-lead-card__copy">
-                    <div className="sports-lead-card__top">
-                      <h3>{section.lead.title}</h3>
-                      {section.lead.metric ? <span>{section.lead.metric}</span> : null}
-                    </div>
-                    <p>{section.lead.description}</p>
-                  </div>
-                  {section.lead.tags?.length ? (
-                    <div className="sports-lead-card__tags">
-                      {section.lead.tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </MediaSlot>
-            ) : null}
+              <MediaSlot
+                className="sports-football-card__media"
+                media={{ ...section.lead.media, fit: 'contain', objectPosition: 'center' }}
+                showFallbackLabel={false}
+              />
+            ) : (
+              <div aria-hidden className="sports-football-card__media sports-football-card__media--empty" />
+            )}
+            <div className="sports-football-card__body">
+              {section.lead.eyebrow ? <span className="content-card__eyebrow">{section.lead.eyebrow}</span> : null}
+              <h3 className="content-card__title">{section.lead.title}</h3>
+              <p className="content-card__description">{section.lead.description}</p>
+            </div>
           </SurfaceCard>
 
-          <div className="sports-side-grid">
+          <div className="sports-detail-grid">
             {section.cards.map((card) => (
-              <SurfaceCard className="sports-side-card" data-hover="lift" data-reveal="scale" key={card.title} variant="media">
-                {card.media ? <MediaSlot className="sports-side-card__media" media={card.media} /> : null}
-                <div className="sports-side-card__body">
-                  <div className="sports-side-card__row">
-                    {card.eyebrow ? <span className="content-card__eyebrow">{card.eyebrow}</span> : null}
-                    {card.metric ? <span className="content-card__metric">{card.metric}</span> : null}
+              <SurfaceCard className="sports-detail-card" data-hover="lift" data-reveal="scale" key={card.title} variant="media">
+                <div className="sports-detail-card__layout">
+                  <div className="sports-detail-card__thumb">
+                    {card.media ? (
+                      <MediaSlot
+                        className="sports-detail-card__thumb-media"
+                        media={{ ...card.media, fit: 'contain', objectPosition: 'center' }}
+                        showFallbackLabel={false}
+                      />
+                    ) : (
+                      <div aria-hidden className="sports-detail-card__thumb-placeholder" />
+                    )}
                   </div>
-                  <h3 className="content-card__title">{card.title}</h3>
-                  <p className="content-card__description">{card.description}</p>
-                  {card.tags?.length ? (
-                    <div className="content-card__tags">
-                      {card.tags.map((tag) => (
-                        <span className="content-card__tag" key={tag}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
+
+                  <div className="sports-detail-card__content">
+                    {card.eyebrow ? <span className="content-card__eyebrow">{card.eyebrow}</span> : null}
+                    <h3 className="content-card__title">{card.title}</h3>
+                    <p className="content-card__description">{card.description}</p>
+                    {card.tags?.length ? (
+                      <div className="content-card__tags">
+                        {card.tags.map((tag) => (
+                          <span className="content-card__tag" key={tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </SurfaceCard>
             ))}

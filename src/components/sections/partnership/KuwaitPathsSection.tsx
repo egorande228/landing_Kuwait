@@ -14,13 +14,14 @@ export function KuwaitPathsSection({ section }: KuwaitPathsSectionProps) {
   return (
     <RevealGroup>
       <SectionShell
+        className="paths-section"
         description={section.description}
         eyebrow={section.eyebrow}
         id={section.id}
         title={section.title}
         tone="soft"
       >
-        <div className="section-card-grid section-card-grid--two">
+        <div className="section-card-grid section-card-grid--two paths-grid">
           {section.cards.map((card) => (
             <SurfaceCard className="path-card h-full" data-hover="tilt" data-reveal="scale" key={card.title} variant="stage">
               <MediaSlot className="path-card__media" media={card.media} />

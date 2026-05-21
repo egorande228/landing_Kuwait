@@ -22,7 +22,7 @@ export function SurfaceCard({
         variant === 'accent' && 'surface-card--accent',
         variant === 'media' && 'surface-card--media',
         variant === 'stage' && 'surface-card--stage',
-        padding === 'md' ? 'p-4 sm:p-5' : 'p-5 sm:p-6',
+        padding === 'md' ? 'surface-card--pad-md' : 'surface-card--pad-lg',
         className,
       )}
       {...rest}
@@ -31,4 +31,3 @@ export function SurfaceCard({
     </div>
   );
 }
-

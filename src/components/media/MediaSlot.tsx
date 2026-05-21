@@ -12,9 +12,16 @@ type MediaSlotProps = {
   className?: string;
   priority?: boolean;
   children?: ReactNode;
+  showFallbackLabel?: boolean;
 };
 
-export function MediaSlot({ media, className, priority = false, children }: MediaSlotProps) {
+export function MediaSlot({
+  media,
+  className,
+  priority = false,
+  children,
+  showFallbackLabel = true,
+}: MediaSlotProps) {
   const imageSrc = media?.src;
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   const [failedSrcs, setFailedSrcs] = useState<Record<string, true>>({});
@@ -56,7 +63,9 @@ export function MediaSlot({ media, className, priority = false, children }: Medi
           <span className="media-slot__panel media-slot__panel--back" />
           <span className="media-slot__panel media-slot__panel--front" />
           <span className="media-slot__orb" />
-          {media?.fallbackLabel ? <span className="media-slot__label">{media.fallbackLabel}</span> : null}
+          {showFallbackLabel && media?.fallbackLabel ? (
+            <span className="media-slot__label">{media.fallbackLabel}</span>
+          ) : null}
         </div>
       ) : null}
 

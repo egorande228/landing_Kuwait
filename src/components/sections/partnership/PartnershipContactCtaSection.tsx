@@ -16,7 +16,7 @@ export function PartnershipContactCtaSection({ content }: PartnershipContactCtaS
     <section className="section-shell section-shell--cta section-shell--cta-partner" id={content.id}>
       <div className="shell-container">
         <RevealGroup>
-          <SurfaceCard className="final-cta-shell p-5 sm:p-6 lg:p-8" data-reveal="scale" variant="stage">
+          <SurfaceCard className="final-cta-shell" data-reveal="scale" padding="lg" variant="stage">
             <div className="final-cta-grid final-cta-grid--partner">
               <div className="final-cta-copy">
                 <p className="eyebrow text-[var(--color-primary-strong)]" data-reveal>
@@ -57,7 +57,6 @@ export function PartnershipContactCtaSection({ content }: PartnershipContactCtaS
                       </div>
                       <div className="partner-contact-card__copy">
                         <strong>{channel.label}</strong>
-                        <span>{channel.platform}</span>
                       </div>
                     </a>
                   ))}

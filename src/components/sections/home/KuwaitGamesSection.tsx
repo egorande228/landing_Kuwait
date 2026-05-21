@@ -19,38 +19,47 @@ export function KuwaitGamesSection({ section }: KuwaitGamesSectionProps) {
         title={section.title}
         tone="default"
       >
-        <div className="section-card-grid section-card-grid--three">
+        <div className="section-card-grid section-card-grid--three games-discovery-grid">
           {section.cards.map((card) => (
-            <SurfaceCard className="content-card h-full" data-hover="lift" data-reveal="scale" key={card.title} variant="media">
+            <SurfaceCard
+              className="content-card content-card--game h-full"
+              data-hover="lift"
+              data-reveal="scale"
+              key={card.title}
+              variant="media"
+            >
               {card.media ? (
-                <MediaSlot className="content-card__media content-card__media--tall" media={card.media} />
+                <MediaSlot
+                  className="content-card__media content-card__media--game"
+                  media={card.media}
+                  showFallbackLabel={false}
+                >
+                  <div className="games-discovery-card__overlay">
+                    <div className="games-discovery-card__meta">
+                      {card.eyebrow ? (
+                        <span className="content-card__eyebrow">{card.eyebrow}</span>
+                      ) : (
+                        <span aria-hidden className="games-discovery-card__spacer" />
+                      )}
+                      {card.metric ? <span className="content-card__metric">{card.metric}</span> : null}
+                    </div>
+
+                    <div className="games-discovery-card__copy">
+                      <h3 className="content-card__title">{card.title}</h3>
+                      <p className="content-card__description">{card.description}</p>
+                      {card.tags?.length ? (
+                        <div className="content-card__tags">
+                          {card.tags.map((tag) => (
+                            <span className="content-card__tag" key={tag}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </MediaSlot>
               ) : null}
-              <div className="content-card__body">
-                {card.eyebrow ? <span className="content-card__eyebrow">{card.eyebrow}</span> : null}
-                <div className="content-card__title-row">
-                  <h3 className="content-card__title">{card.title}</h3>
-                  {card.metric ? <span className="content-card__metric">{card.metric}</span> : null}
-                </div>
-                <p className="content-card__description">{card.description}</p>
-                {card.tags?.length ? (
-                  <div className="content-card__tags">
-                    {card.tags.map((tag) => (
-                      <span className="content-card__tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-                {card.bullets?.length ? (
-                  <div className="content-card__bullets">
-                    {card.bullets.map((bullet) => (
-                      <div className="content-card__bullet" key={bullet}>
-                        {bullet}
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
             </SurfaceCard>
           ))}
         </div>

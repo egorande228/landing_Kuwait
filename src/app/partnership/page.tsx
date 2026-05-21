@@ -5,7 +5,6 @@ import { PartnershipContactCtaSection } from '@/components/sections/partnership/
 import { PartnershipHeroSection } from '@/components/sections/partnership/PartnershipHeroSection';
 import { KuwaitBenefitsSection } from '@/components/sections/partnership/KuwaitBenefitsSection';
 import { KuwaitPathsSection } from '@/components/sections/partnership/KuwaitPathsSection';
-import { KuwaitToolsSection } from '@/components/sections/partnership/KuwaitToolsSection';
 import { StepsSection } from '@/components/sections/shared/StepsSection';
 import { getKuwaitContent } from '@/content/markets/kuwait';
 import { getRequestLocale } from '@/lib/request-locale';
@@ -31,7 +30,6 @@ export default async function PartnershipPage() {
       <KuwaitBenefitsSection section={partnership.benefits} />
       <StepsSection section={partnership.steps} />
       <KuwaitPathsSection section={partnership.paths} />
-      <KuwaitToolsSection section={partnership.tools} />
       <PartnershipContactCtaSection content={partnership.finalCta} />
     </MarketPageShell>
   );
