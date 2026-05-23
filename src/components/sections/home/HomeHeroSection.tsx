@@ -65,11 +65,6 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
                 <div className="hero-stage-card" data-reveal="scale">
                   <MediaSlot className="hero-stage-card__media" media={hero.media} priority>
                     <div className="hero-stage-card__content">
-                      <div className="hero-stage-card__head">
-                        <span className="hero-stage-card__eyebrow">{hero.stage.eyebrow}</span>
-                        <span className="hero-stage-card__signal">KWT</span>
-                      </div>
-
                       <div className="hero-stage-card__body">
                         <h2 className="hero-stage-card__title">{hero.stage.title}</h2>
                         <p className="hero-stage-card__description">{hero.stage.description}</p>

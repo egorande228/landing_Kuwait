@@ -513,7 +513,7 @@ const briefs: KuwaitImageBrief[] = [
     page: 'faq',
     section: 'Support CTA',
     useCase: 'Shared support visual used near the FAQ close.',
-    targetPath: '/public/home/benefits/support.png',
+    targetPath: '/public/faq/faq.png',
     ratio: '16 / 9',
     fit: 'cover',
     tone: 'faq',

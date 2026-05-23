@@ -1429,7 +1429,6 @@ svg {
   gap: 0.85rem;
 }
 
-.hero-stage-card__head,
 .hero-stage-card__top,
 .hero-stage-card__quick-grid,
 .hero-feature-card__row,
@@ -1444,8 +1443,6 @@ svg {
   gap: 0.75rem;
 }
 
-.hero-stage-card__eyebrow,
-.hero-stage-card__signal,
 .content-card__metric,
 .offer-card__metric,
 .path-card__value,
@@ -1462,10 +1459,6 @@ svg {
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-}
-
-.hero-stage-card__signal {
-  color: var(--color-secondary);
 }
 
 .hero-stage-card__body,
@@ -2779,18 +2772,6 @@ svg {
     min-height: 1.56rem;
     padding-inline: 0.52rem;
     font-size: 0.62rem;
-  }
-
-  .hero-shell .hero-stage-card__head {
-    gap: 0.5rem;
-  }
-
-  .hero-shell .hero-stage-card__eyebrow,
-  .hero-shell .hero-stage-card__signal {
-    min-height: 1.75rem;
-    padding-inline: 0.68rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
   }
 
   .hero-shell .hero-stage-card__title {
