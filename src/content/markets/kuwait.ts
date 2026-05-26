@@ -2,16 +2,22 @@ import type { MarketContent } from '@/content/markets/types';
 import { getKuwaitMedia } from '@/content/markets/kuwait-image-briefs';
 import { getLocaleDirection, type Locale } from '@/lib/i18n';
 
+const kuwaitLinks = {
+  sports: 'https://refpa3665.com/L?tag=d_4092175m_66329c_KuwaitSport',
+  casino: 'https://refpa3665.com/L?tag=d_4092175m_66329c_MLBKuwait26',
+  telegram: 'https://t.me/Teamcash_GULFcountries',
+  mail: 'mailto:PAYPARTNERS-MIDDLEAST@MELBET.COM',
+};
+
 const contactChannels = {
   telegram: {
-    href: '#',
+    href: kuwaitLinks.telegram,
     iconSrc: '/telegram.png',
     platform: 'telegram' as const,
   },
-  whatsapp: {
-    href: '#',
-    iconSrc: '/whatsapp.png',
-    platform: 'whatsapp' as const,
+  mail: {
+    href: kuwaitLinks.mail,
+    platform: 'mail' as const,
   },
 };
 
@@ -97,8 +103,8 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
       note:
         'الهوامش ونماذج التعاون والعروض المعروضة هنا تعريفية، وتُراجع نهائيًا حسب نوع الجمهور، التغطية، المدينة، وآلية التشغيل.',
       actionLinks: [
-        { label: 'Telegram', href: '#', external: true },
-        { label: 'WhatsApp', href: '#', external: true },
+        { label: 'Telegram', href: kuwaitLinks.telegram, external: true },
+        { label: 'Mail', href: kuwaitLinks.mail, external: true },
       ],
     },
     home: {
@@ -114,11 +120,11 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
           'اختر ما يناسبك الآن: كرة قدم، كازينو حي، سلوتس، أو هدية افتتاحية. كل شيء جاهز من الهاتف بخطوات سريعة ودعم واضح.',
         primaryCta: {
           label: 'افتح الرياضة الآن',
-          href: '#sports',
+          href: kuwaitLinks.sports,
         },
         secondaryCta: {
           label: 'اكتشف الألعاب',
-          href: '#games',
+          href: kuwaitLinks.casino,
         },
         highlights: ['كرة القدم', 'كازينو حي', 'سلوتس', 'هدايا', 'وصول هاتفي', 'دعم مباشر'],
         stats: [
@@ -274,7 +280,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             bullets: ['حافز افتتاحي', 'مسار واضح', 'جاهز للهاتف'],
             tags: ['Welcome', 'Fast Start'],
             metric: '+200%',
-            href: '#final-cta',
+            href: kuwaitLinks.casino,
             ctaLabel: 'ابدأ من هنا',
             media: getKuwaitMedia('home-offers-welcome'),
           },
@@ -285,7 +291,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             bullets: ['هدايا', 'عروض رجوع', 'دعم الجلسة التالية'],
             tags: ['Rewards', 'Gifts'],
             metric: 'Boost',
-            href: '#final-cta',
+            href: kuwaitLinks.casino,
             ctaLabel: 'افتح العروض',
             media: getKuwaitMedia('home-offers-gifts'),
           },
@@ -299,11 +305,11 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
           'ابدأ من الرياضة إذا كنت تريد مباراة الليلة، افتح الألعاب إذا كنت تريد جلسة أسرع، أو راجع العروض إذا كنت تريد دفعة البداية.',
         primaryCta: {
           label: 'ابدأ من الرياضة',
-          href: '#sports',
+          href: kuwaitLinks.sports,
         },
         secondaryCta: {
           label: 'راجع العروض',
-          href: '#offers',
+          href: kuwaitLinks.casino,
         },
         media: getKuwaitMedia('home-final-cta'),
         notes: ['كرة القدم في المقدمة', 'كازينو حي وسلوتس', 'دعم واضح من الهاتف'],
@@ -326,7 +332,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
         },
         secondaryCta: {
           label: 'تواصل مع المدير',
-          href: '#final-cta',
+          href: kuwaitLinks.telegram,
         },
         highlights: ['Partner', 'Agent', 'Tracking', 'Manager Support'],
         stats: [
@@ -478,7 +484,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             ],
             media: getKuwaitMedia('partnership-partner-route'),
             ctaLabel: 'أريد مسار الشريك',
-            href: '#final-cta',
+            href: kuwaitLinks.telegram,
           },
           {
             eyebrow: 'Agent Route',
@@ -494,7 +500,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             ],
             media: getKuwaitMedia('partnership-agent-route'),
             ctaLabel: 'أريد مسار الوكيل',
-            href: '#final-cta',
+            href: kuwaitLinks.telegram,
           },
         ],
       },
@@ -567,8 +573,8 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             label: 'تواصل عبر Telegram',
           },
           {
-            ...contactChannels.whatsapp,
-            label: 'تواصل عبر WhatsApp',
+            ...contactChannels.mail,
+            label: 'Mail',
           },
         ],
         helperText:
@@ -651,7 +657,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
           },
           {
             question: 'كيف أبدأ بأسرع طريقة؟',
-            answer: 'راجع قسم المسارات في صفحة الشراكة ثم استخدم Telegram أو WhatsApp في زر التواصل الأخير مع وصف مختصر لوضعك.',
+            answer: 'راجع قسم المسارات في صفحة الشراكة ثم استخدم Telegram أو Mail في زر التواصل الأخير مع وصف مختصر لوضعك.',
           },
         ],
       },
@@ -755,8 +761,8 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
       note:
         'Any ranges, offers, or route descriptions shown here are directional and should be reviewed against the real audience, city coverage, and operating setup.',
       actionLinks: [
-        { label: 'Telegram', href: '#', external: true },
-        { label: 'WhatsApp', href: '#', external: true },
+        { label: 'Telegram', href: kuwaitLinks.telegram, external: true },
+        { label: 'Mail', href: kuwaitLinks.mail, external: true },
       ],
     },
     home: {
@@ -772,11 +778,11 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
           'Choose the move that fits the moment now: football, live casino, slots, or a welcome reward. Everything is ready on mobile with a shorter path and direct support.',
         primaryCta: {
           label: 'Open Sports',
-          href: '#sports',
+          href: kuwaitLinks.sports,
         },
         secondaryCta: {
           label: 'Explore Games',
-          href: '#games',
+          href: kuwaitLinks.casino,
         },
         highlights: ['Football', 'Live casino', 'Slots', 'Gifts', 'Mobile access', 'Support'],
         stats: [
@@ -932,7 +938,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             bullets: ['Opening reward', 'Clear path', 'Mobile-ready'],
             tags: ['Welcome', 'Fast Start'],
             metric: '+200%',
-            href: '#final-cta',
+            href: kuwaitLinks.casino,
             ctaLabel: 'Start Here',
             media: getKuwaitMedia('home-offers-welcome'),
           },
@@ -943,7 +949,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             bullets: ['Gift layer', 'Return promos', 'Next-session support'],
             tags: ['Rewards', 'Gifts'],
             metric: 'Boost',
-            href: '#final-cta',
+            href: kuwaitLinks.casino,
             ctaLabel: 'Open Offers',
             media: getKuwaitMedia('home-offers-gifts'),
           },
@@ -957,11 +963,11 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
           'Start from sports if the match is the priority, open games if you want a faster session, or review offers if you want the opening boost first.',
         primaryCta: {
           label: 'Start with Sports',
-          href: '#sports',
+          href: kuwaitLinks.sports,
         },
         secondaryCta: {
           label: 'Review Offers',
-          href: '#offers',
+          href: kuwaitLinks.casino,
         },
         media: getKuwaitMedia('home-final-cta'),
         notes: ['Football first', 'Live casino and slots', 'Clear mobile support'],
@@ -984,7 +990,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
         },
         secondaryCta: {
           label: 'Contact the Manager',
-          href: '#final-cta',
+          href: kuwaitLinks.telegram,
         },
         highlights: ['Partner', 'Agent', 'Tracking', 'Manager Support'],
         stats: [
@@ -1136,7 +1142,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             ],
             media: getKuwaitMedia('partnership-partner-route'),
             ctaLabel: 'I Want the Partner Route',
-            href: '#final-cta',
+            href: kuwaitLinks.telegram,
           },
           {
             eyebrow: 'Agent Route',
@@ -1152,7 +1158,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             ],
             media: getKuwaitMedia('partnership-agent-route'),
             ctaLabel: 'I Want the Agent Route',
-            href: '#final-cta',
+            href: kuwaitLinks.telegram,
           },
         ],
       },
@@ -1225,8 +1231,8 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
             label: 'Contact on Telegram',
           },
           {
-            ...contactChannels.whatsapp,
-            label: 'Contact on WhatsApp',
+            ...contactChannels.mail,
+            label: 'Mail',
           },
         ],
         helperText:
@@ -1309,7 +1315,7 @@ const kuwaitContentByLocale: Record<Locale, MarketContent> = {
           },
           {
             question: 'What is the fastest way to start?',
-            answer: 'Review the partner and agent paths, then use Telegram or WhatsApp with a short description of your situation.',
+            answer: 'Review the partner and agent paths, then use Telegram or Mail with a short description of your situation.',
           },
         ],
       },

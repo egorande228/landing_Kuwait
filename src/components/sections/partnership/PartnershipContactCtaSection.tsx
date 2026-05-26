@@ -53,7 +53,11 @@ export function PartnershipContactCtaSection({ content }: PartnershipContactCtaS
                       target="_blank"
                     >
                       <div className="partner-contact-card__icon">
-                        <Image alt="" height={22} src={channel.iconSrc} width={22} />
+                        {channel.iconSrc ? (
+                          <Image alt="" height={22} src={channel.iconSrc} width={22} />
+                        ) : (
+                          <span>Mail</span>
+                        )}
                       </div>
                       <div className="partner-contact-card__copy">
                         <strong>{channel.label}</strong>

@@ -2445,6 +2445,13 @@ svg {
   background: rgba(240, 201, 120, 0.08);
 }
 
+.partner-contact-card__icon span {
+  color: var(--color-primary-strong);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
 .partner-contact-card__copy {
   display: grid;
   gap: 0;

@@ -10,8 +10,8 @@ export type LinkAction = {
 export type NavLink = LinkAction;
 
 export type ContactAction = LinkAction & {
-  iconSrc: string;
-  platform: 'telegram' | 'whatsapp';
+  iconSrc?: string;
+  platform: 'telegram' | 'mail';
 };
 
 export type MediaTone =

@@ -19,6 +19,8 @@ export function Button({
   className,
   external = false,
 }: ButtonProps) {
+  const isExternal = external || /^(https?:|mailto:|tel:)/.test(href);
+
   return (
     <a
       className={joinClasses(
@@ -31,8 +33,8 @@ export function Button({
         className,
       )}
       href={href}
-      rel={external ? 'noreferrer' : undefined}
-      target={external ? '_blank' : undefined}
+      rel={isExternal ? 'noreferrer' : undefined}
+      target={isExternal ? '_blank' : undefined}
     >
       <span className="btn-base__label">{children}</span>
     </a>

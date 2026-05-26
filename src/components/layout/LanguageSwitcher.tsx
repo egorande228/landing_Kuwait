@@ -21,22 +21,10 @@ export function LanguageSwitcher({ locale, label, variant = 'default' }: Languag
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const persistLocale = async (nextLocale: Locale) => {
-    await fetch('/api/locale', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ locale: nextLocale }),
-    });
-  };
-
-  const handleSelect = async (nextLocale: Locale) => {
+  const handleSelect = (nextLocale: Locale) => {
     if (nextLocale === locale) {
       return;
     }
-
-    await persistLocale(nextLocale);
 
     startTransition(() => {
       router.refresh();
@@ -55,7 +43,7 @@ export function LanguageSwitcher({ locale, label, variant = 'default' }: Languag
           disabled={isPending || locale === option.code}
           key={option.code}
           onClick={() => {
-            void handleSelect(option.code);
+            handleSelect(option.code);
           }}
           type="button"
         >
