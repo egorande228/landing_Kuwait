@@ -4,6 +4,7 @@ import type { LinkAction, FooterColumn } from '@/content/markets/types';
 import type { Locale } from '@/lib/i18n';
 
 import { KuwaitLogo } from '@/components/brand/KuwaitLogo';
+import { isExternalHref, localizeHref } from '@/lib/localized-href';
 
 type FooterProps = {
   brand: {
@@ -18,7 +19,7 @@ type FooterProps = {
 };
 
 function isExternalLink(link: LinkAction) {
-  return link.external === true || link.href.startsWith('http') || link.href.startsWith('mailto:');
+  return link.external === true || isExternalHref(link.href);
 }
 
 export function Footer({ brand, description, columns, note, locale, actionLinks }: FooterProps) {
@@ -28,7 +29,7 @@ export function Footer({ brand, description, columns, note, locale, actionLinks 
         <div className="footer-panel" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
           <div className="footer-grid">
             <div className="footer-brand">
-              <Link aria-label={brand.name} className="footer-brand__logo" href="/">
+              <Link aria-label={brand.name} className="footer-brand__logo" href={localizeHref('/', locale)}>
                 <KuwaitLogo decorative size="footer" />
               </Link>
               <p className="footer-brand__tag">{brand.tag}</p>
@@ -40,7 +41,7 @@ export function Footer({ brand, description, columns, note, locale, actionLinks 
                 <p className="footer-column__title">{column.title}</p>
                 <div className="footer-column__links">
                   {column.links.map((link) => (
-                    <Link className="footer-link" href={link.href} key={link.href}>
+                    <Link className="footer-link" href={localizeHref(link.href, locale)} key={link.href}>
                       {link.label}
                     </Link>
                   ))}
@@ -64,7 +65,11 @@ export function Footer({ brand, description, columns, note, locale, actionLinks 
                     {link.label}
                   </a>
                 ) : (
-                  <Link className="nav-pill nav-pill--secondary" href={link.href} key={`${link.href}-${link.label}`}>
+                  <Link
+                    className="nav-pill nav-pill--secondary"
+                    href={localizeHref(link.href, locale)}
+                    key={`${link.href}-${link.label}`}
+                  >
                     {link.label}
                   </Link>
                 ),

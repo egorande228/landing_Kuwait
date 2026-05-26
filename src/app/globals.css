@@ -739,6 +739,9 @@ svg {
 }
 
 .locale-switcher__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 2.8rem;
   min-height: 2rem;
   border: 0;
@@ -748,6 +751,7 @@ svg {
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.14em;
+  text-decoration: none;
   transition:
     color var(--motion-fast) var(--ease-standard),
     background-color var(--motion-fast) var(--ease-standard);

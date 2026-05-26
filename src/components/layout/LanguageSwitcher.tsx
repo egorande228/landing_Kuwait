@@ -1,10 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useTransition } from 'react';
+import { usePathname } from 'next/navigation';
 
 import { joinClasses } from '@/lib/classes';
 import { type Locale } from '@/lib/i18n';
+import { getLocaleSwitchHref } from '@/lib/localized-href';
 
 type LanguageSwitcherProps = {
   locale: Locale;
@@ -18,18 +18,7 @@ const languageOptions: Array<{ code: Locale; shortLabel: string }> = [
 ];
 
 export function LanguageSwitcher({ locale, label, variant = 'default' }: LanguageSwitcherProps) {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-
-  const handleSelect = (nextLocale: Locale) => {
-    if (nextLocale === locale) {
-      return;
-    }
-
-    startTransition(() => {
-      router.refresh();
-    });
-  };
+  const pathname = usePathname();
 
   return (
     <div
@@ -38,17 +27,14 @@ export function LanguageSwitcher({ locale, label, variant = 'default' }: Languag
       role="group"
     >
       {languageOptions.map((option) => (
-        <button
+        <a
+          aria-current={locale === option.code ? 'page' : undefined}
           className={joinClasses('locale-switcher__button', locale === option.code && 'is-active')}
-          disabled={isPending || locale === option.code}
+          href={getLocaleSwitchHref(pathname, option.code)}
           key={option.code}
-          onClick={() => {
-            handleSelect(option.code);
-          }}
-          type="button"
         >
           {option.shortLabel}
-        </button>
+        </a>
       ))}
     </div>
   );

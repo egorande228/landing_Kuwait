@@ -1,6 +1,10 @@
+'use client';
+
 import type { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 
 import { joinClasses } from '@/lib/classes';
+import { localizeHref } from '@/lib/localized-href';
 
 type ButtonProps = {
   href: string;
@@ -20,6 +24,9 @@ export function Button({
   external = false,
 }: ButtonProps) {
   const isExternal = external || /^(https?:|mailto:|tel:)/.test(href);
+  const pathname = usePathname();
+  const locale = pathname.startsWith('/en') ? 'en' : 'ar';
+  const resolvedHref = localizeHref(href, locale);
 
   return (
     <a
@@ -32,7 +39,7 @@ export function Button({
         size === 'lg' && 'btn-lg',
         className,
       )}
-      href={href}
+      href={resolvedHref}
       rel={isExternal ? 'noreferrer' : undefined}
       target={isExternal ? '_blank' : undefined}
     >

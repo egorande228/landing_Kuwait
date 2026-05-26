@@ -9,6 +9,7 @@ import type { Locale } from '@/lib/i18n';
 import { KuwaitLogo } from '@/components/brand/KuwaitLogo';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 import { joinClasses } from '@/lib/classes';
+import { isExternalHref, localizeHref } from '@/lib/localized-href';
 
 type HeaderMenuRoute = '/' | '/partnership' | '/faq';
 
@@ -55,7 +56,7 @@ function isRouteActive(pathname: string, href: string) {
 }
 
 function isExternalLink(href: string) {
-  return href.startsWith('http') || href.startsWith('mailto:');
+  return isExternalHref(href);
 }
 
 function getHeaderMenuRoute(href: string): HeaderMenuRoute | null {
@@ -114,7 +115,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
         <div className="header-stack">
           <div className="header-panel">
             <div className="header-main">
-              <Link aria-label={brand.name} className="header-brand" href="/">
+              <Link aria-label={brand.name} className="header-brand" href={localizeHref('/', locale)}>
                 <KuwaitLogo decorative size="nav" />
               </Link>
 
@@ -127,7 +128,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                       <Link
                         className="nav-pill nav-pill--primary"
                         data-active={active ? 'true' : 'false'}
-                        href={item.href}
+                        href={localizeHref(item.href, locale)}
                         key={item.href}
                       >
                         {item.label}
@@ -140,7 +141,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                       <Link
                         className="nav-pill nav-pill--primary"
                         data-active={active ? 'true' : 'false'}
-                        href={item.href}
+                        href={localizeHref(item.href, locale)}
                       >
                         <span className="header-nav__content">
                           <span>{item.label}</span>
@@ -151,7 +152,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                       <div className="header-dropdown">
                         <div className="header-dropdown__panel">
                           {item.children.map((child) => (
-                            <Link className="header-dropdown__link" href={child.href} key={child.href}>
+                            <Link className="header-dropdown__link" href={localizeHref(child.href, locale)} key={child.href}>
                               {child.label}
                             </Link>
                           ))}
@@ -166,7 +167,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                 <LanguageSwitcher label={ui.languageLabel} locale={locale} />
                 <a
                   className="btn-base btn-primary btn-md header-cta"
-                  href={cta.href}
+                  href={localizeHref(cta.href, locale)}
                   rel={cta.external || isExternalLink(cta.href) ? 'noreferrer' : undefined}
                   target={cta.external || isExternalLink(cta.href) ? '_blank' : undefined}
                 >
@@ -203,7 +204,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                         <Link
                           className="header-mobile__link"
                           data-active={active ? 'true' : 'false'}
-                          href={item.href}
+                          href={localizeHref(item.href, locale)}
                           key={item.href}
                           onClick={() => {
                             setMenuOpen(false);
@@ -220,7 +221,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                           <Link
                             className="header-mobile__link"
                             data-active={active ? 'true' : 'false'}
-                            href={item.href}
+                            href={localizeHref(item.href, locale)}
                             onClick={() => {
                               setMenuOpen(false);
                             }}
@@ -245,7 +246,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                             {item.children.map((child) => (
                               <Link
                                 className="header-mobile__sublink"
-                                href={child.href}
+                                href={localizeHref(child.href, locale)}
                                 key={child.href}
                                 onClick={() => {
                                   setMenuOpen(false);
@@ -266,7 +267,7 @@ export function Header({ brand, globalLinks, sectionMenus, locale, pathname, ui,
                   <LanguageSwitcher label={ui.languageLabel} locale={locale} variant="menu" />
                   <a
                     className="btn-base btn-primary btn-md"
-                    href={cta.href}
+                    href={localizeHref(cta.href, locale)}
                     rel={cta.external || isExternalLink(cta.href) ? 'noreferrer' : undefined}
                     target={cta.external || isExternalLink(cta.href) ? '_blank' : undefined}
                   >
