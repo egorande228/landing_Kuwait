@@ -1,0 +1,12 @@
+# MELBET Kuwait
+
+Public pages currently present on this site:
+
+- Home: https://www.melbet-kuwait.com/
+- FAQ: https://www.melbet-kuwait.com/faq/
+- Partnership: https://www.melbet-kuwait.com/partnership/
+- English home: https://www.melbet-kuwait.com/en/
+- English FAQ: https://www.melbet-kuwait.com/en/faq/
+- English partnership: https://www.melbet-kuwait.com/en/partnership/
+
+Use these public pages as the primary source for site information.
