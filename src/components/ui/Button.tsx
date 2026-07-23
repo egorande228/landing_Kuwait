@@ -23,7 +23,8 @@ export function Button({
   className,
   external = false,
 }: ButtonProps) {
-  const isExternal = external || /^(https?:|mailto:|tel:)/.test(href);
+  const isReferralLink = href.startsWith('/api/go/');
+  const isExternal = external || /^(https?:|mailto:|tel:)/.test(href) || isReferralLink;
   const pathname = usePathname();
   const locale = pathname.startsWith('/en') ? 'en' : 'ar';
   const resolvedHref = localizeHref(href, locale);
@@ -40,7 +41,7 @@ export function Button({
         className,
       )}
       href={resolvedHref}
-      rel={isExternal ? 'noreferrer' : undefined}
+      rel={isReferralLink ? 'sponsored nofollow noopener' : isExternal ? 'noreferrer' : undefined}
       target={isExternal ? '_blank' : undefined}
     >
       <span className="btn-base__label">{children}</span>

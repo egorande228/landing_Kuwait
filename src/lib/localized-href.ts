@@ -1,7 +1,7 @@
 import type { Locale } from '@/lib/i18n';
 
 export function isExternalHref(href: string) {
-  return /^(https?:|mailto:|tel:)/.test(href);
+  return /^(https?:|mailto:|tel:)/.test(href) || href.startsWith('/api/go/');
 }
 
 export function localizeHref(href: string, locale: Locale) {

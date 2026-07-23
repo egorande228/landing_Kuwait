@@ -3,8 +3,8 @@ import { getKuwaitMedia } from '@/content/markets/kuwait-image-briefs';
 import { getLocaleDirection, type Locale } from '@/lib/i18n';
 
 export const kuwaitLinks = {
-  sports: 'https://refpa3665.com/L?tag=d_4092175m_66329c_KuwaitSport',
-  casino: 'https://refpa3665.com/L?tag=d_4092175m_66329c_MLBKuwait26',
+  sports: '/api/go/sports',
+  casino: '/api/go/casino',
   telegram: 'https://t.me/Teamcash_GULFcountries',
   mail: 'mailto:PAYPARTNERS-MIDDLEAST@MELBET.COM',
 };
