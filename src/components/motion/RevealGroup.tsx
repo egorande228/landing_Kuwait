@@ -10,6 +10,7 @@ import { floatLoop, hoverLift, hoverTilt, pulseGlow, revealLeft, revealScale, re
 type RevealGroupProps = {
   children: ReactNode;
   className?: string;
+  immediate?: boolean;
 };
 
 const REVEAL_DELAY_STEP = 55;
@@ -49,7 +50,7 @@ function runReveal(element: HTMLElement, index: number) {
   revealUp(element, delay);
 }
 
-export function RevealGroup({ children, className }: RevealGroupProps) {
+export function RevealGroup({ children, className, immediate = false }: RevealGroupProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -60,7 +61,7 @@ export function RevealGroup({ children, className }: RevealGroupProps) {
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealTargets = Array.from(node.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const revealTargets = immediate ? [] : Array.from(node.querySelectorAll<HTMLElement>('[data-reveal]'));
 
     if (prefersReducedMotion) {
       revealTargets.forEach((element) => {
@@ -73,7 +74,7 @@ export function RevealGroup({ children, className }: RevealGroupProps) {
     revealTargets.forEach((element) => {
       element.dataset.revealState = 'pending';
     });
-  }, []);
+  }, [immediate]);
 
   useEffect(() => {
     const node = ref.current;
@@ -87,7 +88,7 @@ export function RevealGroup({ children, className }: RevealGroupProps) {
     }
 
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const revealTargets = Array.from(node.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const revealTargets = immediate ? [] : Array.from(node.querySelectorAll<HTMLElement>('[data-reveal]'));
     const hoverCleanups = Array.from(node.querySelectorAll<HTMLElement>('[data-hover="lift"]')).map((element) =>
       hoverLift(element),
     );
@@ -124,7 +125,7 @@ export function RevealGroup({ children, className }: RevealGroupProps) {
       pulseAnimations.forEach((animation) => animation.pause());
       revealCleanups.forEach((cleanup) => cleanup?.());
     };
-  }, []);
+  }, [immediate]);
 
   return (
     <div className={joinClasses('reveal-scope', className)} ref={ref}>

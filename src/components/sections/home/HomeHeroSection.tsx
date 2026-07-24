@@ -14,7 +14,7 @@ export function HomeHeroSection({ hero }: HomeHeroSectionProps) {
   return (
     <section className="section-shell section-shell--hero" id={hero.id}>
       <div className="shell-container">
-        <RevealGroup>
+        <RevealGroup immediate>
           <SurfaceCard className="hero-shell" data-reveal="scale" padding="lg" variant="stage">
             <div className="hero-grid">
               <div className="hero-copy">
